@@ -1,0 +1,24 @@
+{
+  "name": "verkefni1",
+  "version": "1.0.0",
+  "description": "Project 1 in Web programming 2",
+  "type": "module",
+  "main": "src/generate.js",
+  "engines": {
+    "node": "24"
+  },
+  "scripts": {
+    "test": "npm run build"
+  },
+  "author": "Gudrun Lilja Palsd",
+  "license": "ISC",
+  "dependencies": {
+    "stylelint": "^16.26.1"
+  },
+  "devDependencies": {
+    "@eslint/css": "^0.14.1",
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "globals": "^17.0.0"
+  }
+}
