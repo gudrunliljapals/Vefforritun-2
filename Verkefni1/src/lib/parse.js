@@ -1,32 +1,16 @@
+import { splitLine } from "./splitLine.js";
 /**
  * A function that parses one line in a single string
  * and maps a key to a position by index in the line that is predefined
+ * Deletes any lines where the value is empty, null or undefined
  * @param {string} line 
  * @returns an object with mapped keys 
  */
 
-  // TODO mappa categoryNumber yfir í streng skv skjölun
-  /*
-    1 	Almenn kunnátta
-    2 	Náttúra og vísindi
-    3 	Bókmenntir og listir
-    4 	Saga
-    5 	Landafræði
-    6 	Skemmtun og afþreying
-    7 	Íþróttir og tómstundir
-    */
+export function parseQuestions(lines) {
 
-  /*
-1 	Nei 	Flokkanúmer
-2 	Já 	Undirflokkur ef til staðar
-3 	Nei 	Erfiðleikastig: 1: Létt, 2: Meðal, 3: Erfið
-4 	Já 	Gæðastig: 1: Slöpp, 2: Góð, 3: Ágæt
-5 	Nei 	Spurningin
-6 	Nei 	Svarið
-*/
+  const splitQuestions = splitLine(lines);
 
-export function parseQuestions(line) {
-  const splitQuestions = line.split(',');
   const categoryNames = {
     '1': 'Almenn kunnátta',
     '2': 'Náttúra og vísindi',
@@ -80,18 +64,32 @@ export function parseQuestions(line) {
   };
 
   if (q.categoryNumber === undefined || q.question === undefined || q.answer === undefined) {
-    console.log('Spurning eða svar er ekki skilgreint:', q);
+    delete q.categoryNumber;
+    delete q.subCategory;
+    delete q.difficulty;
+    delete q.quality;
+    delete q.question;
+    delete q.answer;
+    // console.log('Flokkur, spurning eða svar er ekki skilgreint');
     return null;
   }
 
   if (q.difficulty === '' || q.difficulty === undefined ) {
-    console.log('Erfiðleikastig er ekki skilgreint:', q);
-    return null;
+    delete q.difficulty;
+    // console.log('Erfiðleikastig er ekki skilgreint');
+    return q;
   }
 
-  if (q.subCategory === '' || q.subCategory === undefined || q.quality === undefined) {
-    console.log('undirflokkur eða Gæðastig er ekki skilgreint:', q);
-    return null;
+  if (q.subCategory === '' || q.subCategory === undefined) {
+    delete q.subCategory
+    // console.log('Undirflokkur er ekki skilgreindur');
+    return q;
+  }
+
+  if (q.quality === '' || q.quality === undefined) {
+    delete q.quality
+    // console.log('Gæðastig er ekki skilgreint');
+    return q;
   }
 
   return q;

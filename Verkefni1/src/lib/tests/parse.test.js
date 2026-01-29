@@ -1,6 +1,6 @@
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
-import { parseQuestions } from './parse.js';
+import { parseQuestions } from '../parse.js';
 
 describe('parse', () => {
   describe('parseQuestions', () => {
