@@ -1,8 +1,8 @@
 
 // <link rel="stylesheet" href="./styles.css">
 /**
- * Html fyrir index síðuna 
- * @returns skilar html 
+ * Býr til HTML fyrir forsíðu (index)
+ * @returns {string} HTML strengur
  */
 
 export function indexHtml () {
@@ -16,6 +16,7 @@ export function indexHtml () {
         />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="./styles.css">
         <title>Trivia Spurningaleikur</title>
         <script src="scripts.js" type="module"></script>
     </head>
@@ -33,6 +34,14 @@ export function indexHtml () {
                 <li><a href="sport.html">Íþróttir og tómstundir</a></li>
             </ul>
         </main>
+        <footer>
+            <p>Upplýsingar um spurningarnar í gagnagrunninum og bakgrunn vefsins má finna 
+                <a id="footer-info" href="https://github.com/sveinn-steinarsson/is-trivia-questions">hér</a>
+            </p>
+            <div class="github-links">
+                <a class="github-glp" href="https://github.com/gudrunliljapals"><img width="17" src="./github-mark.svg" alt="Github logo">gudrunliljapals</a>
+            </div>
+        </footer> 
     </body>
     </html> `;
 
@@ -40,9 +49,11 @@ export function indexHtml () {
 }
 
 /**
- * 
- * @param {*} param0 
- * @returns 
+ * Býr til HTML fyrir flokksíðu
+ * @param {object} params
+ * @param {string} params.title - Titill flokks spurninga
+ * @param {Array<object>} params.questions - Spurningarnar í flokknum (Max 100)
+ * @returns {string} HTML strengur
  */
 
 export function categoryHtml({ title, questions }) {
@@ -58,6 +69,7 @@ export function categoryHtml({ title, questions }) {
         />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="./styles.css">
         <title>${title} - Spurningaleikur</title>
         <script src="scripts.js" type="module"></script>
     </head>
@@ -65,15 +77,47 @@ export function categoryHtml({ title, questions }) {
         <main> 
             <h1>Spurningaleikur!</h1>
             <a href="./index.html">Tilbaka á forsíðu</a>
+
+            <div class="filters"> 
+                <label>
+                    Erfiðleikastig: 
+                    <select id="difficultyFilter">
+                        <option value="">Veldu</option>
+                        <option value="all">Allt</option>
+                        <option value="1">Létt</option>
+                        <option value="2">Meðal</option>
+                        <option value="3">Erfitt</option>
+                    </select>
+
+                    Gæðastig: 
+                    <select id="qualityFilter">
+                        <option value="">Veldu</option>
+                        <option value="all">Allt</option>
+                        <option value="1">Slöpp</option>
+                        <option value="2">Góð</option>
+                        <option value="3">Ágæt</option>
+                    </select>
+                </label>
+            </div>
+
             <div class="counter">
                 <div class="correct">0</div>
                 <div class="incorrect">0</div>
             </div>
 
             <div class="questions"> 
-                <h2>${title}</h2>${qCateogory}</div>
+                <h2>${title}</h2>
+                ${qCateogory}
             </div>
         </main>
+        <footer>
+            <p>Upplýsingar um spurningarnar í gagnagrunninum og bakgrunn vefsins má finna 
+                <a id="footer-info" href="https://github.com/sveinn-steinarsson/is-trivia-questions">hér</a>
+            </p>
+            <div class="github-links">
+                <a class="github-glp" href="https://github.com/gudrunliljapals"><img width="17" src="./github-mark.svg" alt="Github logo">gudrunliljapals</a>
+            </div>
+        </footer> 
     </body>
     </html> `;
     
@@ -82,18 +126,25 @@ export function categoryHtml({ title, questions }) {
 
 
 /**
- * 
- * @param {*} q 
+ * Býr til HTML script fyrir eina spurningu
+ * @param {object} q 
+ * @param {string} q.question  - spurning
+ * @param {string} q.answer - svar við spurningu
+ * @returns {string} HTML strengur
  */
 
 export function questionsHtml(q) {
 
     const html = `
-    <section class="question" data-answered="false">
+    <section class="question" data-answered="false" data-difficulty="${q.difficulty ?? ''}" data-quality="${q.quality ?? ''}">
         <h3>${q.question}</h3>
-        <p>${q.answer}</p>
-        <button type="button" class="button button-correct">Rétt 🫡</button>
-        <button type="button" class="button button-incorrect">Rangt 🥹</button>
+        <button  type="button" class="showAnswer">Sýna svar</button> 
+        <button type="button" class="hideAnswer">Fela svar</button>
+        <p class="answer">${q.answer}</p>
+        <div class="initial-state"> 
+            <button type="button" class="button button-correct">Rétt 🫡</button>
+            <button type="button" class="button button-incorrect">Rangt 🥹</button>
+        </div>
     </section> `;
 
     return html;

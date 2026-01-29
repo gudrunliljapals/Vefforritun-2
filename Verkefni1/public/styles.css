@@ -1,1 +1,37 @@
-/* útfæra */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+    /* sizings */ 
+  --spacing: 1.5rem;
+  --max-width: 1200px;
+
+  /* font */
+  --font-size-button: 1rem;
+  --font-family: -system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-size_heading: 2rem;
+  --font-size-paragraph: 1rem;
+
+    /* colors */
+    --black: #000000ff;
+    --blackberry-cream: #502f4cff;
+    --dusty-lavender: #70587cff;
+    --thistle: #c8b8dbff;
+    --snow: #f9f4f5ff;
+
+
+    /* layout sizes */
+  --border-button: 1px solid #D9D9D9;
+  --border-radius-button: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+

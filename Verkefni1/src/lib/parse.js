@@ -73,25 +73,25 @@ export function parseQuestions(line) {
     delete q.quality;
     delete q.question;
     delete q.answer;
-    console.log('Flokkur, spurning eða svar er ekki skilgreint');
+    // console.log('Flokkur, spurning eða svar er ekki skilgreint');
     return null;
   }
 
   if (q.difficulty === '' || q.difficulty === undefined ) {
     delete q.difficulty;
-    console.log('Erfiðleikastig er ekki skilgreint');
+    // console.log('Erfiðleikastig er ekki skilgreint');
     return q;
   }
 
   if (q.subCategory === '' || q.subCategory === undefined) {
     delete q.subCategory
-    console.log('Undirflokkur er ekki skilgreindur');
+    // console.log('Undirflokkur er ekki skilgreindur');
     return q;
   }
 
   if (q.quality === '' || q.quality === undefined) {
     delete q.quality
-    console.log('Gæðastig er ekki skilgreint');
+    // console.log('Gæðastig er ekki skilgreint');
     return q;
   }
 

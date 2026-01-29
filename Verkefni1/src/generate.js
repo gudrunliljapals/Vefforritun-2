@@ -1,8 +1,6 @@
 import fs from "node:fs/promises";
 import { parseQuestions } from "./lib/parse.js";
-import { indexHtml, questionsHtml, categoryHtml } from  "./lib/sidur.js";
-import { type } from "node:os";
-import { maxHeaderSize } from "node:http";
+import { indexHtml, categoryHtml } from  "./lib/sidur.js";
 
 const MAX_QUESTIONS_PER_CATEGORY = 100;
 
@@ -12,7 +10,6 @@ const MAX_QUESTIONS_PER_CATEGORY = 100;
  */
 
 // TODO filter til að filtera út í spurningum
-// TODO html fyrir hern flokk
 
 async function main() {
   // búa til dist möppu 
@@ -27,11 +24,10 @@ async function main() {
   // ítra í gegnum alla flokka og fá max 100 spurningar úr hverjum flokki
   const Max_questions = [];
   for (let i = 1; i <= 7; i++) {
-    const q = questions.filter((q) => q.categoryNumber === i.toString()).slice(0, MAX_QUESTIONS_PER_CATEGORY);
+    const q = questions.filter((q) => q.categoryNumber === i.toString()).sort(() => Math.random() - 0.5).slice(0, MAX_QUESTIONS_PER_CATEGORY);
 
     Max_questions.push(q);
   }
-  
   const qFlokk1 = Max_questions[0]; 
   const qFlokk2 = Max_questions[1];
   const qFlokk3 = Max_questions[2];
@@ -39,17 +35,6 @@ async function main() {
   const qFlokk5 = Max_questions[4];
   const qFlokk6 = Max_questions[5];
   const qFlokk7 = Max_questions[6];
-
-  
-
-  // 1 	Almenn kunnátta - general.html
-  // 2 	Náttúra og vísindi - nature.html
-  // 3 	Bókmenntir og listir - lit.html
-  // 4 	Saga - saga.html
-  // 5 	Landafræði - geo.html
-  // 6 	Skemmtun og afþreying - fun.html
-  // 7 	Íþróttir og tómstundir - sport.html
-
 
   // index.html
   await fs.writeFile("./dist/index.html", indexHtml(), 'utf-8');
