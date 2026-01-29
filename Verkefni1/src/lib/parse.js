@@ -1,15 +1,18 @@
 import { splitLine } from "./splitLine.js";
 /**
- * A function that parses one line in a single string
- * and maps a key to a position by index in the line that is predefined
- * Deletes any lines where the value is empty, null or undefined
+ * Fall sem parses eina línu í streng og mappar lykla í object skv. indexi 
+ * sem er skilgreint fyrirfram
+ * 
+ * Eyðir línum þar sem gildi er tómt, null eða undefined
+ * -> skilar út í console ef það gerist
+ * 
  * @param {string} line 
- * @returns an object with mapped keys 
+ * @returns {object|null} object með mappaða lykla eða null
  */
 
-export function parseQuestions(lines) {
+export function parseQuestions(line) {
 
-  const splitQuestions = splitLine(lines);
+  const splitQuestions = splitLine(line);
 
   const categoryNames = {
     '1': 'Almenn kunnátta',
@@ -70,25 +73,25 @@ export function parseQuestions(lines) {
     delete q.quality;
     delete q.question;
     delete q.answer;
-    // console.log('Flokkur, spurning eða svar er ekki skilgreint');
+    console.log('Flokkur, spurning eða svar er ekki skilgreint');
     return null;
   }
 
   if (q.difficulty === '' || q.difficulty === undefined ) {
     delete q.difficulty;
-    // console.log('Erfiðleikastig er ekki skilgreint');
+    console.log('Erfiðleikastig er ekki skilgreint');
     return q;
   }
 
   if (q.subCategory === '' || q.subCategory === undefined) {
     delete q.subCategory
-    // console.log('Undirflokkur er ekki skilgreindur');
+    console.log('Undirflokkur er ekki skilgreindur');
     return q;
   }
 
   if (q.quality === '' || q.quality === undefined) {
     delete q.quality
-    // console.log('Gæðastig er ekki skilgreint');
+    console.log('Gæðastig er ekki skilgreint');
     return q;
   }
 

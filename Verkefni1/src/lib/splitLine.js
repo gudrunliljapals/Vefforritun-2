@@ -1,9 +1,13 @@
 
 /**
- * Passa upp á kommur innan gæsalappa í svörum í csv skrá 
+ * Breytir CSV línu í fields
  * 
- * @param {*} line 
- * @returns fields í objects af öllum liðum í csv skránni
+ * Meðhöndlar kommu vesesnið úr spurningaleiks CSV skjalinu 
+ * -> hundsa kommur inn í ""  
+ * -> auka "" innan strengja fields eru breytt í "
+ * 
+ * @param {string} line - lína úr CSV skjali
+ * @returns {string[]} array með parsed field gildum frá CSV línunni
  */
 
 export function splitLine(line) {
