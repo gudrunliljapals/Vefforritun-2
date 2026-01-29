@@ -11,6 +11,8 @@
  */
 
 export function splitLine(line) {
+    if (typeof line !== "string") return [];
+    
     const fields = [];
     let curQuote = "";
     let inQuotes = false;

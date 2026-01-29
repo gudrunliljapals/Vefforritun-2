@@ -101,8 +101,8 @@ export function categoryHtml({ title, questions }) {
             </div>
 
             <div class="counter">
-                <div class="correct">0</div>
-                <div class="incorrect">0</div>
+                <div class="correct">Rétt: <span>0</span></div>
+                <div class="incorrect">Rangt: <span>0</span></div>
             </div>
 
             <div class="questions"> 

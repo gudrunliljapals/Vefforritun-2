@@ -1,10 +1,11 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    /* sizings */ 
+  /* sizings */
   --spacing: 1.5rem;
   --max-width: 1200px;
 
@@ -17,15 +18,14 @@
   --font-size_heading: 2rem;
   --font-size-paragraph: 1rem;
 
-    /* colors */
-    --black: #000000ff;
-    --blackberry-cream: #502f4cff;
-    --dusty-lavender: #70587cff;
-    --thistle: #c8b8dbff;
-    --snow: #f9f4f5ff;
+  /* colors */
+  --black: #000000ff;
+  --blackberry-cream: #502f4cff;
+  --dusty-lavender: #70587cff;
+  --thistle: #c8b8dbff;
+  --snow: #f9f4f5ff;
 
-
-    /* layout sizes */
+  /* layout sizes */
   --border-button: 1px solid #D9D9D9;
   --border-radius-button: 5px;
 }
@@ -35,3 +35,197 @@
 }
 
 
+body {
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-normal);
+  background: var(--snow);
+  color: var(--black);
+  line-height: 1.4;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--spacing) * 0.75);
+}
+
+h1 {
+  font-size: var(--font-size_heading);
+  font-weight: var(--font-weight-bold);
+}
+
+p {
+  font-size: var(--font-size-paragraph);
+  color: var(--dusty-lavender);
+}
+
+a {
+  color: var(--blackberry-cream);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+
+ul {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+ul li a {
+  display: block;
+  padding: 0.85rem 1rem;
+  background: #fff;
+  border: var(--border-button);
+  border-radius: var(--border-radius-button);
+  text-decoration: none;
+  color: var(--black);
+}
+
+ul li a:hover {
+  border-color: var(--dusty-lavender);
+}
+
+
+.filters {
+  padding: 1rem;
+  background: #fff;
+  border: var(--border-button);
+  border-radius: var(--border-radius-button);
+}
+
+.filters label {
+  display: grid;
+  gap: 0.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--blackberry-cream);
+}
+
+.filters select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: var(--border-button);
+  border-radius: var(--border-radius-button);
+  font-size: var(--font-size-paragraph);
+  background: #fff;
+  color: var(--black);
+}
+
+@media (min-width: 720px) {
+  .filters label {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+
+.counter {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.counter > div {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: #fff;
+  border: var(--border-button);
+  border-radius: var(--border-radius-button);
+  text-align: center;
+  font-weight: var(--font-weight-bold);
+}
+
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.question {
+  padding: 1rem;
+  background: #fff;
+  border: var(--border-button);
+  border-radius: var(--border-radius-button);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.question h3 {
+  font-weight: var(--font-weight-bold);
+  font-size: 1.05rem;
+}
+
+.answer {
+  padding: 0.75rem;
+  border: 1px dashed var(--thistle);
+  border-radius: var(--border-radius-button);
+  background: var(--snow);
+  color: var(--black);
+}
+
+button {
+  font-family: var(--font-family);
+  font-size: var(--font-size-button);
+  border: var(--border-button);
+  border-radius: var(--border-radius-button);
+  background: #fff;
+  color: var(--black);
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+}
+
+button:hover {
+  border-color: var(--dusty-lavender);
+}
+
+button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+.initial-state {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.initial-state button {
+  flex: 1;
+  min-width: 140px;
+}
+
+footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing);
+  color: var(--dusty-lavender);
+}
+
+.github-links {
+  margin-top: 0.5rem;
+}
+
+.github-glp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.6rem;
+  background: #fff;
+  border: var(--border-button);
+  border-radius: var(--border-radius-button);
+  text-decoration: none;
+  color: var(--black);
+}
+
+.github-glp:hover {
+  border-color: var(--dusty-lavender);
+}

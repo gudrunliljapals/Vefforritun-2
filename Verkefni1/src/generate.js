@@ -11,7 +11,7 @@ const MAX_QUESTIONS_PER_CATEGORY = 100;
 
 // TODO filter til að filtera út í spurningum
 
-async function main() {
+export async function main() {
   // búa til dist möppu 
   const distPath = './dist'; 
   await fs.mkdir(distPath, {recursive: true});

@@ -34,8 +34,8 @@ for (const q of questionElement) {
     });
 }
 
-const correctElement = document.querySelector('.counter .correct'); 
-const incorrectElement = document.querySelector('.counter .incorrect');
+const correctElement = document.querySelector('.counter .correct span'); 
+const incorrectElement = document.querySelector('.counter .incorrect span');
 
 if (!correctElement || !incorrectElement) {
     console.error('unable to find elements')
@@ -125,6 +125,6 @@ function applyFilters() {
 }
 
 difficultyFilter?.addEventListener('change', applyFilters);
-qualityFilter.addEventListener('change', applyFilters);
+qualityFilter?.addEventListener('change', applyFilters);
 
 applyFilters();
